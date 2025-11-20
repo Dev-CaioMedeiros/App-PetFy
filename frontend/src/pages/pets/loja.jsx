@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ShoppingBag, ArrowLeft, Star } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import "../styles/loja.css";
+import "../../styles/pets/loja.css";
 
 export default function Loja() {
   const [busca, setBusca] = useState("");
@@ -21,7 +21,7 @@ export default function Loja() {
   return (
     <div className="loja-container">
       <div className="loja-header">
-  <button onClick={() => navigate("/home")} className="back-btn">
+  <button onClick={() => navigate("/home/home")} className="back-btn">
     <ArrowLeft size={20} /> Voltar
   </button>
 

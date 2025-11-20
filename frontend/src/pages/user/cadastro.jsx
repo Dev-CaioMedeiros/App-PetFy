@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Lock, User, Phone, Eye, EyeOff } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import petRegister from "../assets/pet-cadastro.png";
-import "../styles/cadastro.css";
+import petRegister from "../../assets/pet-cadastro.png";
+import "../../styles/user/cadastro.css";
 
 export default function Cadastro() {
   const [showPassword, setShowPassword] = useState(false);

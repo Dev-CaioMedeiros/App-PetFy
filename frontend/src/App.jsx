@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Welcome from "./pages/welcome";
-import Login from "./pages/login";
-import Cadastro from "./pages/cadastro";
-import Home from "./pages/home";
-import Loja from "./pages/loja";
-import EditarPerfil from "./pages/editar_p_dono";
-import MeusPets from "./pages/meus_pets";
+import Welcome from "./pages/home/welcome";
+import Login from "./pages/user/login";
+import Cadastro from "./pages/user/cadastro";
+import Home from "./pages/home/home";
+import Loja from "./pages/pets/loja";
+import EditarPerfil from "./pages/user/editar_p_dono";
+import MeusPets from "./pages/pets/meus_pets";
 import PrivateRoute from "./components/PrivateRoute";
-import PetDetalhes from "./pages/pet_detalhes";
-import CadastrarPet from "./pages/cadastrar_pet";
+import PetDetalhes from "./pages/pets/pet_detalhes";
+import CadastrarPet from "./pages/pets/cadastrar_pet";
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
 
         {/* ROTA PROTEGIDA */}
         <Route
-          path="/home"
+          path="/home/home"
           element={
             <PrivateRoute>
               <Home />

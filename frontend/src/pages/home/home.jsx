@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ShoppingBag,PawPrint,Scissors,HeartPulse,ChevronRight,Search,User, } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import dogHero from "../assets/pet.png";
-import dogShop from "../assets/pet-care.png";
-import dogLove from "../assets/pet-friends-love.png";
-import dogMyPets from "../assets/pet-mine.png";
-import { getToken, clearToken } from "../services/auth";
-import { BASE_URL } from "../services/config";
-import "../styles/home.css";
+import dogHero from "../../assets/pet.png";
+import dogShop from "../../assets/pet-care.png";
+import dogLove from "../../assets/pet-friends-love.png";
+import dogMyPets from "../../assets/pet-mine.png";
+import { getToken, clearToken } from "../../services/auth";
+import { BASE_URL } from "../../services/config";
+import "../../styles/home/home.css";
 
 export default function Home() {
   const [nomeUsuario, setNomeUsuario] = useState("Carregando...");
@@ -185,7 +185,8 @@ export default function Home() {
         </div>
         <div className="section-img">
           <img src={dogMyPets} alt="Meus pets" />
-          <ChevronRight className="arrow-icon" size={20} />
+          <ChevronRight className="arrow-icon" size={20}
+           onClick={() => navigate("/meus_pets")}/>
         </div>
       </motion.div>
 
@@ -200,13 +201,16 @@ export default function Home() {
           <h3>Loja Pet</h3>
           <h2>Acessórios e mais</h2>
           <p>Compre a felicidade do seu pet 💛</p>
-          <button className="section-btn" onClick={() => navigate("/loja")}>
+          <button className="section-btn" 
+            onClick={() => navigate("/loja")}
+            >
             Ver agora
           </button>
         </div>
         <div className="section-img">
           <img src={dogShop} alt="Marketplace pet" />
-          <ChevronRight className="arrow-icon" size={20} />
+          <ChevronRight className="arrow-icon" size={20} 
+          onClick={() => navigate("/loja")}/>
         </div>
       </motion.div>
 
@@ -221,13 +225,16 @@ export default function Home() {
           <h3>Passeios</h3>
           <h2>Veja seus últimos passeios</h2>
           <p>Dê felicidade e uma vida saudável ao seu pet</p>
-          <button className="section-btn">
+          <button className="section-btn"
+          onClick={() => navigate("/passeio")}
+          >
             Encontrar
           </button>
         </div>
         <div className="section-img">
           <img src={dogLove} alt="Passeios pet" />
-          <ChevronRight className="arrow-icon" size={20} />
+          <ChevronRight className="arrow-icon" size={20}
+          onClick={() => navigate("/passeio")} />
         </div>
       </motion.div>
 

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
-import "../styles/welcome.css";
-import petWelcome from "../assets/pet-welcome.png";
+import petWelcome from "../../assets/pet-welcome.png";
+import "../../styles/home/welcome.css";
 
 export default function Welcome() {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ export default function Welcome() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      navigate("/home"); // já está logado, vai pra home direto
+      navigate("/home/home"); 
     }
   }, [navigate]);
 

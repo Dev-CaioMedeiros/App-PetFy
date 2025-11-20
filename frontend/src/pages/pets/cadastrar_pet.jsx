@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { PawPrint,Camera,Dog,Info,HeartPulse,ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { getToken } from "../services/auth";
-import { BASE_URL } from "../services/config";
-import "../styles/cadastrar_pet.css";
+import { getToken } from "../../services/auth";
+import { BASE_URL } from "../../services/config";
+import "../../styles/pets/cadastrar_pet.css";
 
 export default function CadastrarPet() {
   const [pet, setPet] = useState({
@@ -68,7 +68,7 @@ export default function CadastrarPet() {
     >
 
       {/* SETA VOLTAR */}
-      <div className="voltar-btn" onClick={() => navigate(-1)}>
+      <div className="voltar-btn" onClick={() => navigate("/home/home")}>
         <ArrowLeft size={22} />
         <span>Voltar</span>
       </div>
@@ -79,7 +79,7 @@ export default function CadastrarPet() {
         initial={{ y: -10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
       >
-        Cadastrar Pet <PawPrint size={28} className="paw-icon" />
+        Cadastrar Pet 
       </motion.h1>
 
       {/* FOTO */}

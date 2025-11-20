@@ -221,3 +221,13 @@
   border: none;
 }
 
+.arrow-icon {
+  cursor: pointer;
+  display: flex;
+  gap: 0.3rem;
+  transition: transform 0.2s ease;
+}
+
+.arrow-icon:hover {
+  transform: translateX(4px);
+}

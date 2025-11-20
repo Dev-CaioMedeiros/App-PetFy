@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import loginImg from "../assets/pet-login.png";
-import { saveToken } from "../services/auth";
-import "../styles/Login.css";
+import loginImg from "../../assets/pet-login.png";
+import { saveToken } from "../../services/auth";
+import "../../styles/user/login.css";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -27,7 +27,7 @@ export default function Login() {
 
       if (res.ok) {
         saveToken(data.token);
-        navigate("/home");
+        navigate("/home/home");
       } else {
         setErro(data.mensagem || "Erro ao fazer login.");
       }

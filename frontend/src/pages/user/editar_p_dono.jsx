@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Mail, User, Phone, Camera, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { getToken } from "../services/auth";
-import { BASE_URL } from "../services/config";
-import "../styles/editar_p_user.css";
+import { getToken } from "../../services/auth";
+import { BASE_URL } from "../../services/config";
+import "../../styles/user/editar_p_user.css";
 
 export default function EditarPerfil() {
   const [usuario, setUsuario] = useState({
@@ -106,7 +106,7 @@ export default function EditarPerfil() {
 
       if (res.ok) {
         alert("Perfil atualizado com sucesso!");
-        navigate("/home");
+        navigate("/home/home");
       } else {
         alert(data.mensagem || "Erro ao atualizar perfil");
       }
