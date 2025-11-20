@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import loginImg from "../assets/pet-login.png";
+import { saveToken } from "../services/auth";
 import "../styles/Login.css";
 
 export default function Login() {
@@ -25,7 +26,7 @@ export default function Login() {
       const data = await res.json();
 
       if (res.ok) {
-        localStorage.setItem("token", data.token);
+        saveToken(data.token);
         navigate("/home");
       } else {
         setErro(data.mensagem || "Erro ao fazer login.");

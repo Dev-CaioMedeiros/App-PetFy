@@ -20,7 +20,6 @@ function App() {
         <Route path="/loja" element={<Loja />} />
         <Route path="/editar_p_dono" element={<EditarPerfil />} />
         <Route path="/meus_pets" element={<MeusPets />} />
-        <Route path="/meus-pets" element={<MeusPets />} />
         <Route path="/pets/:id" element={<PetDetalhes />} />
         <Route path="/cadastrar-pet" element={<CadastrarPet />} />
 

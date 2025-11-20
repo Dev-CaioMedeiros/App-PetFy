@@ -1,15 +1,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  PawPrint,
-  Camera,
-  Dog,
-  Info,
-  HeartPulse,
-  Ruler,
-  ArrowLeft
-} from "lucide-react";
+import { PawPrint,Camera,Dog,Info,HeartPulse,ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { getToken } from "../services/auth";
+import { BASE_URL } from "../services/config";
 import "../styles/cadastrar_pet.css";
 
 export default function CadastrarPet() {
@@ -40,18 +34,20 @@ export default function CadastrarPet() {
   const salvarPet = async (e) => {
     e.preventDefault();
 
-    const token = localStorage.getItem("token");
+    const token = getToken();
     const formData = new FormData();
 
     for (let key in pet) {
       formData.append(key, pet[key]);
     }
 
-    const res = await fetch("http://localhost:5000/api/pets", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${token}` },
-      body: formData,
-    });
+    const res = await fetch(`${BASE_URL}/pets`, {
+    method: "POST",
+    headers: { 
+      Authorization: `Bearer ${token}` 
+    },
+      body: formData
+  });
 
     const data = await res.json();
 

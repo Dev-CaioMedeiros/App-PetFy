@@ -1,9 +1,10 @@
-const API_URL = "http://localhost:5000/api";
+import { BASE_URL } from "./config";
+import { getToken } from "./auth";
 
 export const api = {
   // Login
   login: async (email, senha) => {
-    const response = await fetch(`${API_URL}/login`, {
+    const response = await fetch(`${BASE_URL}/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, senha }),
@@ -13,7 +14,7 @@ export const api = {
 
   // Cadastro
   cadastrar: async (dados) => {
-    const response = await fetch(`${API_URL}/cadastro`, {
+    const response = await fetch(`${BASE_URL}/cadastro`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(dados),
@@ -22,8 +23,9 @@ export const api = {
   },
 
   // Pega usuário autenticado
-  getUsuario: async (token) => {
-    const response = await fetch(`${API_URL}/usuario`, {
+  getUsuario: async () => {
+    const token = getToken();
+    const response = await fetch(`${BASE_URL}/usuario`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     return response.json();

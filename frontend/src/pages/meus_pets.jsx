@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { PawPrint, Plus, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { getToken } from "../services/auth";
+import { BASE_URL } from "../services/config";
 import "../styles/meus_pets.css";
 
 export default function MeusPets() {
@@ -10,11 +12,11 @@ export default function MeusPets() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+   const token = getToken();
 
-    fetch("http://localhost:5000/api/pets", {
-      headers: {
-        Authorization: `Bearer ${token}`,
+    fetch(`${BASE_URL}/pets`, {
+      headers: { 
+        Authorization: `Bearer ${token}` 
       },
     })
       .then(async (res) => {
@@ -43,7 +45,7 @@ export default function MeusPets() {
         animate={{ opacity: 1, y: 0 }}
       >
         Meus Pets <PawPrint size={28} className="pets-icon" />
-      </motion.h1>
+      </motion.h1> 
 
       {loading && <p className="loading-text">Carregando pets...</p>}
 
@@ -54,7 +56,7 @@ export default function MeusPets() {
             className="pet-card"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            onClick={() => navigate(`/pet/${pet.id}`)}
+            onClick={() => navigate(`/pets/${pet.id}`)}
           >
             <img
               src={

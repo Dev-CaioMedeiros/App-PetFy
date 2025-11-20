@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Mail, User, Phone, Camera, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { getToken } from "../services/auth";
+import { BASE_URL } from "../services/config";
 import "../styles/editar_p_user.css";
 
 export default function EditarPerfil() {
@@ -11,13 +13,10 @@ export default function EditarPerfil() {
     email: "",
     foto: null,
   });
-
   const [fotoPreview, setFotoPreview] = useState(null);
   const navigate = useNavigate();
 
-  // ============================
   // MÁSCARA DE TELEFONE
-  // ============================
   const formatarTelefone = (valor) => {
     if (!valor) return "";
     valor = valor.replace(/\D/g, "");
@@ -34,17 +33,17 @@ export default function EditarPerfil() {
       .slice(0, 15);
   };
 
-  // ============================
   // BUSCAR DADOS DO USUÁRIO
-  // ============================
   useEffect(() => {
     async function fetchUser() {
       try {
-        const token = localStorage.getItem("token");
+        const token = getToken();
 
-        const res = await fetch("http://localhost:5000/api/usuario", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+    fetch(`${BASE_URL}/usuario`, {
+      headers: { 
+        Authorization: `Bearer ${token}` 
+      },
+    });
 
         const data = await res.json();
 

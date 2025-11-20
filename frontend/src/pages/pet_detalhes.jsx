@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, HeartPulse, Bone, Info } from "lucide-react";
+import { getToken } from "../services/auth";
+import { BASE_URL } from "../services/config";
 import "../styles/pet_detalhes.css";
 
 export default function PetDetalhes() {
@@ -23,11 +25,14 @@ export default function PetDetalhes() {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = getToken();
 
-    fetch(`http://localhost:5000/api/pets/${id}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
+  fetch(`${BASE_URL}/pets/${id}`, {
+    headers: { 
+      Authorization: `Bearer ${token}` 
+    },
+  })
+
       .then(async (res) => {
         const data = await res.json();
 

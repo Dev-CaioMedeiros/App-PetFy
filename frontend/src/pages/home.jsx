@@ -1,21 +1,14 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import {
-  ShoppingBag,
-  PawPrint,
-  Scissors,
-  HeartPulse,
-  ChevronRight,
-  Search,
-  User,
-} from "lucide-react";
+import { ShoppingBag,PawPrint,Scissors,HeartPulse,ChevronRight,Search,User, } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import "../styles/home.css";
-
 import dogHero from "../assets/pet.png";
 import dogShop from "../assets/pet-care.png";
 import dogLove from "../assets/pet-friends-love.png";
 import dogMyPets from "../assets/pet-mine.png";
+import { getToken, clearToken } from "../services/auth";
+import { BASE_URL } from "../services/config";
+import "../styles/home.css";
 
 export default function Home() {
   const [nomeUsuario, setNomeUsuario] = useState("Carregando...");
@@ -25,13 +18,13 @@ export default function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = getToken();
     if (!token) {
       navigate("/login");
       return;
     }
 
-    fetch("http://localhost:5000/api/usuario", {
+    fetch(`${BASE_URL}/usuario`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => {
@@ -46,13 +39,14 @@ export default function Home() {
         }
       })
       .catch(() => {
-        localStorage.removeItem("token");
+        clearToken();
         navigate("/login");
       });
   }, [navigate]);
 
   return (
     <div className="home-container">
+
       {/* Menu usuário */}
       <div className="user-menu">
         <div
@@ -68,33 +62,32 @@ export default function Home() {
         </div>
 
         {showMenu && (
-  <motion.div
-    className="dropdown-menu"
-    initial={{ opacity: 0, y: -5 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.2 }}
-  >
-    <button
-      type="button"
-      onClick={() => navigate("/editar_p_dono")}
-      className="dropdown-item"
-    >
-      Editar perfil
-    </button>
+          <motion.div
+            className="dropdown-menu"
+            initial={{ opacity: 0, y: -5 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <button
+              type="button"
+              onClick={() => navigate("/editar_p_dono")}
+              className="dropdown-item"
+            >
+              Editar perfil
+            </button>
 
-    <button
-      type="button"
-      onClick={() => {
-        localStorage.removeItem("token");
-        navigate("/login");
-      }}
-      className="dropdown-item"
-    >
-      Sair
-    </button>
-  </motion.div>
-)}
-
+            <button
+              type="button"
+              onClick={() => {
+                clearToken();
+                navigate("/login");
+              }}
+              className="dropdown-item"
+            >
+              Sair
+            </button>
+          </motion.div>
+        )}
       </div>
 
       {/* Saudação */}
@@ -219,7 +212,7 @@ export default function Home() {
 
       {/* Passeios */}
       <motion.div
-        className="pet-section tinder"
+        className="pet-section passeios"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2 }}
@@ -228,10 +221,12 @@ export default function Home() {
           <h3>Passeios</h3>
           <h2>Veja seus últimos passeios</h2>
           <p>Dê felicidade e uma vida saudável ao seu pet</p>
-          <button className="section-btn">Encontrar</button>
+          <button className="section-btn">
+            Encontrar
+          </button>
         </div>
         <div className="section-img">
-          <img src={dogLove} alt="Pet Tinder" />
+          <img src={dogLove} alt="Passeios pet" />
           <ChevronRight className="arrow-icon" size={20} />
         </div>
       </motion.div>
