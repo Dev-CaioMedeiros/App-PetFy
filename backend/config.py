@@ -5,8 +5,13 @@ from flask import Flask
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 
-# Carrega variáveis do .env
-load_dotenv()
+# Escolhe qual ambiente carregar
+ENVIRONMENT = os.getenv("FLASK_ENV", "local")
+
+if ENVIRONMENT == "production":
+    load_dotenv(".env.production")
+else:
+    load_dotenv(".env")  # seu .env local
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
@@ -21,8 +26,9 @@ def init_app():
     DB_NAME = os.getenv("DB_NAME")
     DB_PORT = os.getenv("DB_PORT", 3306)
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = \
-    f'mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}'
+    app.config['SQLALCHEMY_DATABASE_URI'] = (
+        f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}?charset=utf8mb4"
+    )
     
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.secret_key = os.getenv('SECRET_KEY', 'dev123')

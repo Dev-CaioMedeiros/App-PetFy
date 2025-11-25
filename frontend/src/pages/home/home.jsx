@@ -149,20 +149,31 @@ export default function Home() {
           <span>Pet Store</span>
         </div>
 
-        <div className="menu-item">
-          <PawPrint className="menu-icon" size={24} />
-          <span>Serviços</span>
+        <div 
+          className="menu-item"
+          onClick={() => navigate("/consulta")}
+          style={{ cursor: "pointer" }}>
+          <HeartPulse className="menu-icon" size={24} />
+          <span>Consultas</span>
         </div>
 
-        <div className="menu-item">
+        <div
+          className="menu-item"
+          onClick={() => navigate("/pet_shop")}
+          style={{ cursor: "pointer" }}
+        >
+          <PawPrint className="menu-icon" size={24} />
+          <span>Pet Shop</span>
+        </div>
+
+        <div className="menu-item"
+          onClick={() => navigate("/vacinas")}
+          style={{ cursor: "pointer" }}
+          >
           <Scissors className="menu-icon" size={24} />
           <span>Vacinas</span>
         </div>
 
-        <div className="menu-item">
-          <HeartPulse className="menu-icon" size={24} />
-          <span>Consultas</span>
-        </div>
       </motion.div>
 
       {/* Meus pets */}
@@ -175,7 +186,7 @@ export default function Home() {
         <div className="section-text">
           <h3>Meus Pets</h3>
           <h2>Veja seus companheiros</h2>
-          <p>Acompanhe, edite e cuide deles 🐶🐱</p>
+          <p>Cuide, dê amor e acompanhê seus a 🐶🐱</p>
           <button
             className="section-btn"
             onClick={() => navigate("/meus_pets")}
@@ -198,9 +209,9 @@ export default function Home() {
         transition={{ delay: 1 }}
       >
         <div className="section-text">
-          <h3>Loja Pet</h3>
+          <h3>Pet Store</h3>
           <h2>Acessórios e mais</h2>
-          <p>Compre a felicidade do seu pet 💛</p>
+          <p>Seu pet merece tudo do melhor 💛</p>
           <button className="section-btn" 
             onClick={() => navigate("/loja")}
             >
@@ -226,7 +237,7 @@ export default function Home() {
           <h2>Veja seus últimos passeios</h2>
           <p>Dê felicidade e uma vida saudável ao seu pet</p>
           <button className="section-btn"
-          onClick={() => navigate("/passeio")}
+          onClick={() => navigate("/passeios")}
           >
             Encontrar
           </button>

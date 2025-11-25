@@ -10,6 +10,30 @@
   padding: 2rem 1rem;
   font-family: "Poppins", sans-serif;
   animation: fadeIn 0.5s ease-in-out;
+  color: #3d2c2c;
+}
+
+/* ================================
+   BOTÃO VOLTAR
+================================ */
+.voltar-editar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+  color: #f4a300;
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%;
+  justify-content: flex-start;
+  margin-bottom: 0.6rem;
+  padding-left: 6px;
+  transition: 0.2s ease;
+}
+
+.voltar-editar:hover {
+  transform: translateX(-3px);
+  opacity: 0.85;
 }
 
 /* ================================
@@ -18,9 +42,9 @@
 .editar-title {
   font-size: 1.9rem;
   font-weight: 700;
-  color: #222;
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.5px;
+  color: #3d2c2c;
+  margin-bottom: 1.4rem;
+  letter-spacing: -0.4px;
   animation: slideDown 0.6s ease forwards;
 }
 
@@ -29,18 +53,18 @@
 ================================ */
 .foto-container {
   margin-bottom: 1.5rem;
-  animation: scaleIn 0.6s ease;
+  animation: scaleIn 0.55s ease;
 }
 
 .foto-label {
   cursor: pointer;
-  width: 140px;
-  height: 140px;
+  width: 145px;
+  height: 145px;
   border-radius: 50%;
   overflow: hidden;
   border: 3px solid #ffca5d;
   background: #fff8e6;
-  box-shadow: 0 6px 16px rgba(255, 184, 76, 0.25);
+  box-shadow: 0 10px 22px rgba(255, 184, 76, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,20 +72,8 @@
 }
 
 .foto-label:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 18px rgba(255, 184, 76, 0.4);
-}
-
-.foto-placeholder {
-  text-align: center;
-  color: #ffb84c;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  opacity: 0.8;
+  transform: scale(1.06);
+  box-shadow: 0 12px 26px rgba(255, 184, 76, 0.45);
 }
 
 .foto-preview {
@@ -70,21 +82,44 @@
   object-fit: cover;
 }
 
+.foto-placeholder {
+  text-align: center;
+  color: #ffb84c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
 /* ================================
    FORMULÁRIO
 ================================ */
 .editar-form {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(12px);
+  background: #ffffffee;
+  backdrop-filter: blur(10px);
   border-radius: 1.7rem;
-  padding: 2rem;
+  padding: 1.9rem;
   width: 100%;
   max-width: 390px;
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.07);
   display: flex;
   flex-direction: column;
   gap: 1rem;
   animation: fadeUp 0.6s ease;
+}
+
+/* ================================
+   LABELS
+================================ */
+.label-campo {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #5a4a42;
+  margin-left: 4px;
+  margin-bottom: -6px;
 }
 
 /* ================================
@@ -93,26 +128,27 @@
 .input-group {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  border: 1px solid #e5e5e5;
+  gap: 0.55rem;
+  border: 1px solid #e8e2d3;
   border-radius: 50px;
   padding: 0.75rem 1.1rem;
-  background: #fff;
+  background: #fffdf8;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
   transition: box-shadow 0.25s ease, transform 0.2s ease;
 }
 
 .input-group:focus-within {
-  box-shadow: 0 0 0 3px rgba(255, 193, 77, 0.35);
+  box-shadow: 0 0 0 3px rgba(255, 193, 77, 0.45);
   transform: translateY(-1px);
 }
 
 .input-icon {
-  color: #888;
-  transition: color 0.3s ease;
+  color: #9e8b72;
+  transition: 0.2s ease;
 }
 
 .input-group:focus-within .input-icon {
-  color: #ffb84c;
+  color: #f4a300;
 }
 
 .input-group input {
@@ -120,11 +156,12 @@
   border: none;
   outline: none;
   font-size: 0.95rem;
-  color: #333;
+  color: #3d2c2c;
+  background: transparent;
 }
 
 /* ================================
-   BOTÃO
+   BOTÃO SALVAR
 ================================ */
 .editar-button {
   background: linear-gradient(180deg, #fcd34d, #fbbf24);
@@ -132,47 +169,27 @@
   color: white;
   font-weight: 700;
   border-radius: 50px;
-  padding: 0.8rem;
-  margin-top: 0.5rem;
+  padding: 0.9rem;
+  margin-top: 0.3rem;
   cursor: pointer;
-  box-shadow: 0 5px 12px rgba(251, 191, 36, 0.4);
+  box-shadow: 0 6px 16px rgba(251, 191, 36, 0.45);
   transition: transform 0.2s ease, box-shadow 0.25s ease;
 }
 
 .editar-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 7px 16px rgba(251, 191, 36, 0.55);
+  box-shadow: 0 8px 20px rgba(251, 191, 36, 0.6);
 }
 
 .editar-button:active {
-  transform: scale(0.97);
+  transform: scale(0.96);
 }
-
-.voltar-editar {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 16px;
-  color: #f4a300;
-  cursor: pointer;
-  font-weight: 500;
-
-  /* 👇 Fixar no canto esquerdo */
-  width: 100%;
-  justify-content: flex-start;
-
-  /* Ajuste visual */
-  margin-bottom: 10px;
-  padding-left: 8px;
-}
-
 
 /* ================================
    ANIMAÇÕES
 ================================ */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0; } to { opacity: 1; }
 }
 
 @keyframes fadeUp {
@@ -181,26 +198,24 @@
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-10px); }
+  from { opacity: 0; transform: translateY(-8px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.8); }
+  from { opacity: 0; transform: scale(0.85); }
   to { opacity: 1; transform: scale(1); }
 }
 
 /* ================================
    RESPONSIVIDADE
 ================================ */
-@media (max-width: 400px) {
+@media (max-width: 420px) {
   .editar-form {
-    padding: 1.6rem;
+    padding: 1.5rem;
   }
   .foto-label {
-    width: 120px;
-    height: 120px;
+    width: 125px;
+    height: 125px;
   }
 }
-
-

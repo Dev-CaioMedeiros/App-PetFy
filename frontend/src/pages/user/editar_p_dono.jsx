@@ -13,6 +13,7 @@ export default function EditarPerfil() {
     email: "",
     foto: null,
   });
+
   const [fotoPreview, setFotoPreview] = useState(null);
   const navigate = useNavigate();
 
@@ -39,11 +40,11 @@ export default function EditarPerfil() {
       try {
         const token = getToken();
 
-    fetch(`${BASE_URL}/usuario`, {
-      headers: { 
-        Authorization: `Bearer ${token}` 
-      },
-    });
+        const res = await fetch(`${BASE_URL}/usuario`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
         const data = await res.json();
 
@@ -67,9 +68,7 @@ export default function EditarPerfil() {
     fetchUser();
   }, []);
 
-  // ============================
-  // SELECIONAR FOTO
-  // ============================
+  // FOTO
   const handleFotoChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -78,9 +77,7 @@ export default function EditarPerfil() {
     }
   };
 
-  // ============================
   // SALVAR ALTERAÇÕES
-  // ============================
   const handleSalvar = async (e) => {
     e.preventDefault();
 
@@ -94,9 +91,9 @@ export default function EditarPerfil() {
     }
 
     try {
-      const token = localStorage.getItem("token");
+      const token = getToken();
 
-      const res = await fetch("http://localhost:5000/api/editar-perfil", {
+      const res = await fetch(`${BASE_URL}/editar-perfil`, {
         method: "PUT",
         headers: { Authorization: `Bearer ${token}` },
         body: formData,
@@ -123,8 +120,7 @@ export default function EditarPerfil() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-
-      {/* 🔙 BOTÃO DE VOLTAR */}
+      {/* 🔙 VOLTAR */}
       <div className="voltar-editar" onClick={() => navigate(-1)}>
         <ArrowLeft size={22} color="#f4a300" />
         <span>Voltar</span>
@@ -138,6 +134,7 @@ export default function EditarPerfil() {
         Editar Perfil 🐾
       </motion.h1>
 
+      {/* FOTO */}
       <motion.div
         className="foto-container"
         whileHover={{ scale: 1.03 }}
@@ -163,6 +160,7 @@ export default function EditarPerfil() {
         </label>
       </motion.div>
 
+      {/* FORM */}
       <motion.form
         className="editar-form"
         onSubmit={handleSalvar}
@@ -170,21 +168,23 @@ export default function EditarPerfil() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
       >
+        {/* NOME */}
+        <label className="label-campo">Nome</label>
         <div className="input-group">
           <User className="input-icon" size={18} />
           <input
             type="text"
-            placeholder="Nome completo"
             value={usuario.nome}
             onChange={(e) => setUsuario({ ...usuario, nome: e.target.value })}
           />
         </div>
 
+        {/* TELEFONE */}
+        <label className="label-campo">Telefone</label>
         <div className="input-group">
           <Phone className="input-icon" size={18} />
           <input
             type="text"
-            placeholder="Telefone"
             value={usuario.telefone}
             onChange={(e) =>
               setUsuario({
@@ -195,16 +195,18 @@ export default function EditarPerfil() {
           />
         </div>
 
+        {/* EMAIL */}
+        <label className="label-campo">E-mail</label>
         <div className="input-group">
           <Mail className="input-icon" size={18} />
           <input
             type="email"
-            placeholder="E-mail"
             value={usuario.email}
             onChange={(e) => setUsuario({ ...usuario, email: e.target.value })}
           />
         </div>
 
+        {/* BOTÃO */}
         <motion.button
           type="submit"
           className="editar-button"

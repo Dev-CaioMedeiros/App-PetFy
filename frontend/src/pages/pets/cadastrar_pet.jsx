@@ -53,7 +53,7 @@ export default function CadastrarPet() {
 
     if (res.ok) {
       alert("Pet cadastrado com sucesso!");
-      navigate("/meus-pets");
+      navigate("/meus_pets");
     } else {
       alert(data.mensagem || "Erro ao cadastrar pet");
     }
@@ -194,5 +194,6 @@ export default function CadastrarPet() {
 
       </form>
     </motion.div>
+    
   );
 }

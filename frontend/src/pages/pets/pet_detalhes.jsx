@@ -11,6 +11,8 @@ export default function PetDetalhes() {
   const navigate = useNavigate();
   const [pet, setPet] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [confirmDelete, setConfirmDelete] = useState(false);
+
 
   useEffect(() => {
     const token = getToken();
@@ -30,11 +32,37 @@ export default function PetDetalhes() {
   if (loading) return <p className="pet-loading">Carregando...</p>;
   if (!pet) return <p className="pet-loading">Pet não encontrado.</p>;
 
+  async function handleDelete() {
+  try {
+    const token = getToken();
+    
+    const res = await fetch(`${BASE_URL}/pets/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      alert("Pet excluído com sucesso!");
+      navigate("/meus_pets");
+    } else {
+      alert(data.mensagem || "Erro ao excluir pet");
+    }
+
+  } catch (error) {
+    alert("Erro ao conectar ao servidor.");
+    console.error(error);
+  }
+}
+
   return (
     <div className="pet-detalhes-page">
       
       {/* BOTÃO VOLTAR */}
-      <div className="pet-back-btn" onClick={() => navigate("/home/home")}>
+      <div className="pet-back-btn" onClick={() => navigate("/meus_pets")}>
         <ArrowLeft size={22} />
       </div>
 
@@ -59,10 +87,10 @@ export default function PetDetalhes() {
         {/* TAGS */}
         <div className="pet-info-tags">
           <span className="tag">
-            <CalendarDays size={16} /> {pet.idade} anos
+            <Bone size={16} /> {pet.sexo}
           </span>
           <span className="tag">
-            <Bone size={16} /> {pet.sexo}
+            <CalendarDays size={16} /> {pet.idade} anos
           </span>
           {pet.porte && (
             <span className="tag">
@@ -130,11 +158,29 @@ export default function PetDetalhes() {
 
         <button
           className="btn-delete"
-          onClick={() => navigate(`/deletar_pet/${pet.id}`)}
+          onClick={() => setConfirmDelete(true)}
         >
           <Trash2 size={18} /> Excluir
         </button>
       </div>
+      {confirmDelete && (
+  <div className="popup-overlay">
+    <div className="popup-box">
+      <h3>Tem certeza que deseja excluir?</h3>
+      <p>Essa ação não pode ser desfeita.</p>
+
+      <div className="popup-buttons">
+        <button className="confirm-btn" onClick={handleDelete}>
+          Sim, excluir
+        </button>
+
+        <button className="cancel-btn" onClick={() => setConfirmDelete(false)}>
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+)}
     </div>
   );
 }

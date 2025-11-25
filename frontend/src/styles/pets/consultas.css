@@ -1,0 +1,115 @@
+.consultas-page {
+  min-height: 100vh;
+  background: #fff7ec;
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+  color: #3d2c2c;
+}
+
+.c-back-btn {
+  background: transparent;
+  border: none;
+  color: #c0841c;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.c-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+/* Promo */
+.c-promo {
+  background: #d0f0ff; /* azul médico */
+  border-radius: 20px;
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  box-shadow: 0 10px 25px rgba(0, 150, 255, 0.15);
+}
+
+.c-promo h2 {
+  margin: 0;
+  font-weight: 800;
+}
+
+.c-promo-btn {
+  background: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 40px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.c-promo-img {
+  width: 90px;
+}
+
+/* busca */
+.c-search {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  border-radius: 14px;
+  padding: 12px;
+  border: 1.5px solid #ecdcc4;
+  margin-bottom: 20px;
+}
+
+.c-search input {
+  border: none;
+  outline: none;
+  font-size: 15px;
+  width: 100%;
+}
+
+/* cards */
+.c-subtitle {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.c-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.c-card {
+  background: #fff;
+  padding: 18px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  box-shadow: 0 5px 14px rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: .25s ease;
+}
+
+.c-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.c-icon { font-size: 32px; }
+.c-card-title { font-weight: 600; text-align: center; }
+
+.c-arrow {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  color: #937c63;
+}

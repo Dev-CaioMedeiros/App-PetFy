@@ -9,9 +9,9 @@ export default function Loja() {
   const navigate = useNavigate();
 
   const produtos = [
-    { id: 1, nome: "Coleira Personalizada", preco: "R$ 49,90", img: "/assets/loja/coleira.png", destaque: true },
-    { id: 2, nome: "Caminha Premium", preco: "R$ 199,00", img: "/assets/loja/caminha.png" },
-    { id: 3, nome: "Ração Gold 10kg", preco: "R$ 89,90", img: "/assets/loja/ração.png" },
+    { id: 1, nome: "Coleira Personalizada", preco: "R$ 49,90", img: "src/assets/loja/coleira.png", destaque: true },
+    { id: 2, nome: "Caminha Premium", preco: "R$ 199,00", img: "src/assets/loja/caminha.png" },
+    { id: 3, nome: "Ração Gold 10kg", preco: "R$ 89,90", img: "src/assets/loja/ração.png" },
   ];
 
   const filtrados = produtos.filter(p =>

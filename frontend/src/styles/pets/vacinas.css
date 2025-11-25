@@ -1,0 +1,100 @@
+.vacinas-page {
+  min-height: 100vh;
+  background: #fff7ec;
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+.v-back-btn {
+  background: transparent;
+  border: none;
+  color: #c0841c;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.v-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* Promo */
+.v-promo {
+  background: #ffe7b7;
+  padding: 18px;
+  border-radius: 20px;
+  margin: 18px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 10px 25px rgba(255,190,80,0.20);
+}
+
+.v-btn {
+  background: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.v-img {
+  width: 90px;
+}
+
+/* busca */
+.v-search {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  border-radius: 14px;
+  padding: 12px;
+  border: 1.5px solid #ecdcc4;
+  margin-bottom: 20px;
+}
+
+/* cards */
+.v-subtitle {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.v-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.v-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 5px 14px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  transition: .25s ease;
+  cursor: pointer;
+}
+
+.v-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.v-emoji { font-size: 32px; }
+
+.v-arrow {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  color: #9d856a;
+}
