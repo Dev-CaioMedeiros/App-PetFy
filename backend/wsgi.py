@@ -1,4 +1,6 @@
-from config import init_app
+# wsgi.py
+from app import app
 
-app = init_app()
-
+# NÃO execute o servidor automaticamente quando importado:
+if __name__ == "__main__":
+    app.run(debug=True)
